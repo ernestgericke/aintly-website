@@ -17,6 +17,9 @@ const PORT = process.env.PORT || 3000;
 // Security & Middleware
 // ============================================
 
+// Trust proxy - required when behind reverse proxy (Coolify/Nginx)
+app.set('trust proxy', 1);
+
 // Helmet for security headers
 app.use(helmet({
   contentSecurityPolicy: false, // Allow inline scripts for static files
@@ -65,8 +68,8 @@ app.use(express.static('./', {
  */
 function createTransporter() {
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.SMTP_PORT || '587'),
+    host: process.env.SMTP_HOST || 'smtp.sentgrid.net',
+    port: parseInt(process.env.SMTP_PORT || '465'),
     secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
     auth: {
       user: process.env.SMTP_USER,
@@ -174,8 +177,10 @@ app.post('/api/contact', async (req, res) => {
     const transporter = createTransporter();
 
     // Email to Aintly (info@aintly.com)
+    // Note: For SendGrid, use verified sender email as 'from' address
+    const fromEmail = process.env.FROM_EMAIL || process.env.CONTACT_EMAIL || 'info@aintly.com';
     const mailOptions = {
-      from: `"${formData.name}" <${process.env.SMTP_USER}>`,
+      from: `"Aintly Website" <${fromEmail}>`,
       to: process.env.CONTACT_EMAIL || 'info@aintly.com',
       replyTo: formData.email,
       subject: `New Contact Form Submission - ${formData.service}`,
@@ -256,7 +261,7 @@ Submitted on: ${new Date().toLocaleString()}
 
     // Send auto-reply to customer (optional)
     const autoReplyOptions = {
-      from: `"Aintly" <${process.env.SMTP_USER}>`,
+      from: `"Aintly" <${fromEmail}>`,
       to: formData.email,
       subject: 'Thank you for contacting Aintly',
       html: `
