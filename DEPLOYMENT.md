@@ -89,10 +89,10 @@ Click on **"Environment Variables"** and add the following:
 # Required
 NODE_ENV=production
 PORT=3000
-SMTP_HOST=smtp.gmail.com
+SMTP_HOST=smtp.sendgrid.net
 SMTP_PORT=587
 SMTP_SECURE=false
-SMTP_USER=your-email@gmail.com
+SMTP_USER=your-email@sendgrid.net
 SMTP_PASS=your-app-password
 CONTACT_EMAIL=info@aintly.com
 
