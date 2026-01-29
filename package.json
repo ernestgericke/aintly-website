@@ -1,0 +1,38 @@
+{
+  "name": "aintly-website",
+  "version": "1.0.0",
+  "description": "Aintly.com - Digital Transformation Company Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "concurrently \"npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch\" \"nodemon server.js\"",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "build:css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "prod": "npm run build:css && NODE_ENV=production node server.js"
+  },
+  "keywords": [
+    "digital-transformation",
+    "IT-services",
+    "automation",
+    "AI-solutions"
+  ],
+  "author": "Aintly",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.8",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "nodemon": "^3.0.2",
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simplified incomplete circle for favicon -->
+  <g transform="translate(32, 32)">
+    <!-- Circle with gap on top-left -->
+    <path d="M -18 -18 A 28 28 0 1 1 18 -18" 
+          stroke="#166534" 
+          stroke-width="5" 
+          fill="none" 
+          stroke-linecap="round"/>
+  </g>
+  
+  <!-- Letter "a" in the center -->
+  <text x="32" y="40" 
+        font-family="Georgia, serif" 
+        font-size="28" 
+        fill="#166534" 
+        font-weight="600"
+        text-anchor="middle">a</text>
+</svg>
