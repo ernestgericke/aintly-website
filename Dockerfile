@@ -11,11 +11,12 @@ COPY package*.json ./
 RUN npm install --production && \
     npm install -D tailwindcss
 
-# Copy source files needed for build
+# Copy source files needed for build (Tailwind needs to scan HTML for used classes)
 COPY tailwind.config.js ./
 COPY src/ ./src/
+COPY index.html ./
 
-# Build CSS
+# Build CSS (Tailwind will scan index.html for used CSS classes)
 RUN npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify
 
 # Stage 2: Production
