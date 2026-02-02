@@ -289,7 +289,7 @@ Submitted on: ${new Date().toLocaleString()}
               <p>In the meantime, feel free to explore our website or reach out directly:</p>
               <ul>
                 <li>Email: info@aintly.com</li>
-                <li>Phone: +1 (234) 567-890</li>
+                <li>Phone: +27 74 442 7757</li>
               </ul>
               
               <p>Best regards,<br><strong>The Aintly Team</strong></p>
